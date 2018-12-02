@@ -1,5 +1,9 @@
 These are some utilities I have written.
 
+## trackPackage
+
+`trackPackage.py` prints the latest update about a package you're expecting in the mail. It is intended for occasional personal use on your computer.
+
 ## xorTable
 
 `xorTable.py` generates the pretty image I use for my avatar on github. Each pixel is the XOR of its x and y coordinates. It can also print out a table of `x XOR y` or it can apply a XOR cellular automata rule to a random sequence of points to generate an image.
