@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 # trackPackage.py
-#doesn't work need to use api
 
 from bs4 import BeautifulSoup
 import argparse
