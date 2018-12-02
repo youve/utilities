@@ -5,7 +5,7 @@ import cmath, readline
 def mandelbrot(z):
     newz = z**2 + z
     bailout = 1000
-    while cmath.polar(newz)[0] < 2 and bailout > 0:
+    while cmath.polar(newz)[0]**2 + cmath.polar(newz)[1]**2 < 2**2 and bailout > 0:
         newz = newz**2 + z
         bailout = bailout - 1
         print(newz)
