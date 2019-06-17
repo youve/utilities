@@ -1,8 +1,11 @@
+#!/usr/bin/env python3
+
 import argparse
 import fractions
 
-parser = argparse.ArgumentParser(description='How many times do you expect to throw a fair n sided die before the sum of the rolls is evenly divisible by k?.')
-parser.add_argument('n', metavar='dice', type=int, help='How many sides does the die have?')
+parser = argparse.ArgumentParser(description='How many times do you expect to throw a fair n sided die before the sum of the rolls is evenly divisible by k?')
+parser.add_argument('n', metavar='sides', type=int, help='How many sides does the die have?')
+#parser.add_argument('d', metavar='dice', type=int, help='How many dice? Default is 1', default=1)
 parser.add_argument('k', metavar='mod', type=int, help="What should the sum be divisible by?")
 parser.add_argument('-v', '--verbose', action='store_true')
 
