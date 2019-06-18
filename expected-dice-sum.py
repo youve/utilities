@@ -44,6 +44,8 @@ while len(answer) < k:
     else:
         answer.append(last_turn[0]/sum(last_turn))
 
+if args.verbose:
+    print(f'Turn {len(answer)}: {sep.join(map(str, last_turn))}\t{sum(last_turn)}')
 if useFractions:
     print('\nChance of finishing at each turn:')
     print(*range(1,k + 1), sep=sep)
