@@ -32,9 +32,19 @@ def trim(data):
     end = data.index(get_end_str(data))
     return data[start:end]
 
+def decode_enough_times(data):
+    start = get_start_str(data)
+    end = get_end_str(data)
+    while start not in data or end not in data:
+        data = unquote(data)
+        start = get_start_str(data)
+        end = get_end_str(data)
+    return data
+
+
 parser = argparse.ArgumentParser(description='Translate qutebrowser garbage back into a url')
 parser.add_argument('data', type=str, help='Garbage from qutebrowser')
 
 args = parser.parse_args()
 
-print(unquote(trim(args.data)))
+print(unquote(trim(decode_enough_times(args.data))))
