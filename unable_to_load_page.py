@@ -6,6 +6,8 @@ visible in urlencoded form. This program extracts the url
 '''
 
 import argparse
+import os
+
 from urllib.parse import unquote
 
 def get_start_str(data):
@@ -51,17 +53,29 @@ def decode_enough_times(data):
     '''
     start = get_start_str(data)
     end = get_end_str(data)
+    looped = 0
     while start not in data or end not in data:
         # the asserts in get_start_str and get_end_str ensure this will halt eventually
         data = unquote(data)
         start = get_start_str(data)
         end = get_end_str(data)
+        looped += 1
+        if os.getenv("DEBUG"):
+            print(f"decode_enough_times looped {looped}")
     return data
 
+def de_amp(data):
+    looped = 0
+    while "&amp" in data:
+        data = data.replace("&amp;", "&")
+        looped += 1
+        if os.getenv("DEBUG"):
+            print(f"de_amp looped {looped}")
+    return data
 
 parser = argparse.ArgumentParser(description='Translate qutebrowser garbage back into a url')
 parser.add_argument('data', type=str, help='Garbage from qutebrowser')
 
 args = parser.parse_args()
 
-print(unquote(trim(decode_enough_times(args.data))))
+print(de_amp(unquote(unquote(trim(decode_enough_times(args.data))))))
